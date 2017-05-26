@@ -10,15 +10,14 @@ request for a list of models for the make selected.
 Install
 -------
 
-    $ virtualenv fjae
-    $ source fjae/bin/activate
+    $ virtualenv --python=[path of Python 2.7] venv
+    $ source venv/bin/activate
     $ pip install -r requirements.txt
-    $ pip install -e ./
 
 Run
 ---
 
-    $ python bin/runserver.py
+    $ python run.py
 
 Go to http://localhost:5000 in your browser
 

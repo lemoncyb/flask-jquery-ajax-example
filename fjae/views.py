@@ -3,6 +3,7 @@ import json
 from flask import request, render_template, make_response
 from flask.views import MethodView
 
+from fjae import app
 from fjae.forms import VehicleForm
 
 
@@ -27,6 +28,7 @@ MODEL_LIST = (
 )
 
 
+@app.route('/', methods=['GET', 'POST'])
 def select_vehicle():
     """
     Render a vehicle selection form and handle form submission
@@ -61,3 +63,7 @@ class ModelsAPI(MethodView):
         response = make_response(json.dumps(data))
         response.content_type = 'application/json'
         return response
+
+app.add_url_rule(
+        '/models/<int:make_id>/', view_func=ModelsAPI.as_view('models_api'),
+        methods=['GET'])
